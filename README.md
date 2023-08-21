@@ -5,7 +5,7 @@
 <a href="https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
 </a>
-https://img.shields.io/badge/npm-v1.1.0-blue
+<br/>
 Calendar carousal is a mobile friendly component which give emphasis on selected date and time, you might have seen similar examples in booking related websites where selected dates must remain visible at all times for good UX.
 
 ## <a name="table-of-contents"></a>Table of contents
