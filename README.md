@@ -1,8 +1,37 @@
-# react-calendar-carousel
+# <a name="project-name"></a>react-calendar-carousel
 
 Calendar carousal is a mobile friendly component which give emphasis on selected date and time, you might have seen similar examples in booking related websites where selected dates must remain visible at all times for good UX.
 
-## Installation
+## <a name="table-of-contents"></a>Table of contents
+
+- [Project Name](#project-name)
+  - [Table of contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [API](#api)
+    - [Components](#components)
+      - [CalendarConfigProvider](#calendar-config-provider)
+      - [Calendar](#calendar)
+    - [Hooks](#hooks)
+      - [useCalendar](#use-calendar)
+    - [Custom Types](#custom-types)
+      - [IDate](#idate)
+      - [Formats](#formats)
+      - [CardBreakpoint](#card-breakpoint)
+      - [ClosedHoursRange](#closed-hours-range)
+      - [Selected](#selected)
+      - [CalendarTheme](#calendar-theme)
+        - [AliasToken](#alias-token)
+        - [CustomStyles](#custom-styles)
+    - [Utils](#utils)
+      - [getDates](#get-dates)
+      - [getDurationInHours](#get-duration-in-hours)
+      - [getFormattedDate](#get-formatted-date)
+      - [getFormattedTime](#get-formatted-time)
+  - [Built With](#built-with)
+  - [License](#license)
+
+## <a name="installation"></a>Installation
 
 You can install `react-calendar-carousel` using npm.
 
@@ -10,7 +39,7 @@ You can install `react-calendar-carousel` using npm.
 npm i react-calendar-carousel --save
 ```
 
-## Usage
+## <a name="usage"></a>Usage
 
 ```typescript
 import { CalendarConfigProvider } from  "react-calendar-carousel"
@@ -40,13 +69,13 @@ const MyComponent = () => {
 export default MyComponent
 ```
 
-## API
+## <a name="api"></a>API
 
 The `Calendar` component can be used by wrapping it in the `CalendarConfigProvider`, both imported from `react-calendar-carousel`. All of the calendar’s state management and date logic are bundled in `useCalendar` custom hook.
 
-## Components&nbsp;
+## <a name="components"></a>Components&nbsp;
 
-## `CalendarConfigProvider`
+## <a name="calendar-config-provider"></a>`CalendarConfigProvider`
 
 | Prop         | Description                                                  | Type                                     | Default |
 | :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
@@ -60,7 +89,7 @@ The `Calendar` component can be used by wrapping it in the `CalendarConfigProvid
 | closedHours  | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)  | -       |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         | -       |
 
-## `Calendar`
+## <a name="calendar"></a>`Calendar`
 
 | Prop              | Description                                         | Type                 | Default      |
 | :---------------- | :-------------------------------------------------- | :------------------- | :----------- |
@@ -69,9 +98,9 @@ The `Calendar` component can be used by wrapping it in the `CalendarConfigProvid
 | timeComponent     | Component that will replace the **time picker**     | `ReactNode`          | -            |
 | durationComponent | Component that will replace the **duration setter** | `ReactNode`          | -            |
 
-## Hooks&nbsp;
+## <a name="hooks"></a>Hooks&nbsp;
 
-## `useCalendar`
+## <a name="use-calendar"></a>`useCalendar`
 
 This custom hook provides access to all the state values of the package, along with the functions to update the state.
 
@@ -91,7 +120,7 @@ This custom hook provides access to all the state values of the package, along w
 | closedDates      | Dates that should be closed                                  | `string` \| [Dayjs](https://day.js.org/) |
 | closedHours      | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)  |
 
-## Custom Types
+## <a name="custom-types"></a>Custom Types
 
 ### <a name="idate"></a>`IDate`
 
@@ -162,11 +191,11 @@ type CalendarTheme = {
 }
 ```
 
-### `AliasToken`
+### <a name="alias-token"></a>`AliasToken`
 
 `general` styles are applied using _Ant Design tokens_. More info [here](https://ant.design/docs/react/customize-theme#seedtoken). _The general styles are inherited if a custom property is not provided_.
 
-### `CustomStyles`
+### <a name="custom-styles"></a>`CustomStyles`
 
 `custom` styles allow for component-specific customization. Below are the styles that can be applied.
 | Name | Description | Type |
@@ -180,3 +209,51 @@ type CalendarTheme = {
 | cardGap | Gap between the date cards in the carousel | `number`
 | buttonBorderRadius | Border radius of buttons that update duration | `number`
 | carouselWidth | Width of the entire `Calendar` component | `number`
+
+## <a name="utils"></a>Utils
+
+### <a name="get-dates"></a>`getDates`
+
+_returns:_ [IDate[]](#idate)
+Get a list of dates starting from today by providing the number of required days.
+| Param | Description | Type |
+| :--- | :--- | :--- |
+| amountOfDays | The total number of days starting **from today** | `number`
+| closedDates | Dates that should be closed | `string` \| [Dayjs](https://day.js.org/)
+
+### <a name="get-duration-in-hours"></a>`getDurationInHours`
+
+_returns:_ `string`
+Convert minutes into hour representation.
+| Param | Description | Type |
+| :--- | :--- | :--- |
+| minutes | The duration in minutes | `number`
+
+### <a name="get-formatted-date"></a>`getFormattedDate`
+
+_returns:_ `string`
+Convert date to a formatted string.
+| Param | Description | Type |
+| :--- | :--- | :--- |
+| date | The date to format | [IDate[]](#idate) \| `null`
+| format | The format to return | `string`
+
+### <a name="get-formatted-time"></a>`getFormattedTime`
+
+_returns:_ `string`
+Convert time to a formatted string.
+| Param | Description | Type |
+| :--- | :--- | :--- |
+| time | The time to format | [Dayjs](https://day.js.org/) \| `null`
+| format | The format to return | `string`
+
+## <a name="built-with"></a>Built With
+
+- React + TypeScript using [Vite](https://vitejs.dev/)
+- [Dayjs](https://day.js.org/)
+- [Ant Design](https://ant.design/)
+
+## <a name="built-with"></a>License
+
+Copyright © 2023 [Hassam Ud Din](https://github.com/kefranabg).
+This project is [MIT](https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE) licensed.
