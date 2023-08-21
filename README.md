@@ -213,8 +213,7 @@ type CalendarTheme = {
 ## <a name="utils"></a>Utils
 
 ### <a name="get-dates"></a>`getDates`
-
-_returns:_ [IDate[]](#idate)
+_returns:_ [IDate[]](#idate)<br />
 Get a list of dates starting from today by providing the number of required days.
 | Param | Description | Type |
 | :--- | :--- | :--- |
@@ -223,7 +222,7 @@ Get a list of dates starting from today by providing the number of required days
 
 ### <a name="get-duration-in-hours"></a>`getDurationInHours`
 
-_returns:_ `string`
+_returns:_ `string`<br />
 Convert minutes into hour representation.
 | Param | Description | Type |
 | :--- | :--- | :--- |
@@ -231,7 +230,7 @@ Convert minutes into hour representation.
 
 ### <a name="get-formatted-date"></a>`getFormattedDate`
 
-_returns:_ `string`
+_returns:_ `string`<br />
 Convert date to a formatted string.
 | Param | Description | Type |
 | :--- | :--- | :--- |
@@ -240,7 +239,7 @@ Convert date to a formatted string.
 
 ### <a name="get-formatted-time"></a>`getFormattedTime`
 
-_returns:_ `string`
+_returns:_ `string`<br />
 Convert time to a formatted string.
 | Param | Description | Type |
 | :--- | :--- | :--- |
@@ -255,5 +254,5 @@ Convert time to a formatted string.
 
 ## <a name="built-with"></a>License
 
-Copyright © 2023 [Hassam Ud Din](https://github.com/kefranabg).
+Copyright © 2023 [Hassam Ud Din](https://github.com/kefranabg).<br />
 This project is [MIT](https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE) licensed.
