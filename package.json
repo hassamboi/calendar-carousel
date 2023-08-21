@@ -1,11 +1,13 @@
 {
   "name": "react-calendar-carousel",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "Hassam Ud Din",
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -51,8 +53,10 @@
     "vite-plugin-dts": "^3.5.2"
   },
   "keywords": [
+    "react-calendar-carousel",
+    "calendar-carousel",
     "react",
     "calendar",
-    "calendar-carousel"
+    "carousel"
   ]
 }

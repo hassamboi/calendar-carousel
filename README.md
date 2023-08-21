@@ -15,7 +15,7 @@ npm i react-calendar-carousel --save
 ```typescript
 import { CalendarConfigProvider } from  "react-calendar-carousel"
 
-function App() {
+const App = () => {
   return (
     <CalendarConfigProvider>
       {...}
@@ -29,7 +29,7 @@ export default App
 ```typescript
 import Calendar from  "react-calendar-carousel"
 
-function MyComponent() {
+const MyComponent = () => {
   return (
     {...}
       <Calendar />
