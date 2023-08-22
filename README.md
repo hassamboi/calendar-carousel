@@ -1,6 +1,7 @@
 # <a name="project-name"></a>react-calendar-carousel
+
 <a href="https://www.npmjs.com/package/react-calendar-carousel">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.1.2-blue" target="_blank" />
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.1.3-blue" target="_blank" />
 </a>
 <a href="https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
@@ -219,6 +220,7 @@ type CalendarTheme = {
 ## <a name="utils"></a>Utils
 
 ### <a name="get-dates"></a>`getDates`
+
 _returns:_ [IDate[]](#idate)<br />
 Get a list of dates starting from today by providing the number of required days.
 | Param | Description | Type |
