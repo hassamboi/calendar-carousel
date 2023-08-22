@@ -79,9 +79,9 @@ export default MyComponent
 
 The `Calendar` component can be used by wrapping it in the `CalendarConfigProvider`, both imported from `react-calendar-carousel`. All of the calendar’s state management and date logic are bundled in `useCalendar` custom hook.
 
-## <a name="components"></a>Components&nbsp;
+### <a name="components"></a>Components&nbsp;
 
-## <a name="calendar-config-provider"></a>`CalendarConfigProvider`
+### <a name="calendar-config-provider"></a>`CalendarConfigProvider`
 
 | Prop         | Description                                                  | Type                                     | Default |
 | :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
@@ -95,7 +95,7 @@ The `Calendar` component can be used by wrapping it in the `CalendarConfigProvid
 | closedHours  | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)  | -       |
 | theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         | -       |
 
-## <a name="calendar"></a>`Calendar`
+### <a name="calendar"></a>`Calendar`
 
 | Prop              | Description                                         | Type                 | Default      |
 | :---------------- | :-------------------------------------------------- | :------------------- | :----------- |
@@ -104,9 +104,9 @@ The `Calendar` component can be used by wrapping it in the `CalendarConfigProvid
 | timeComponent     | Component that will replace the **time picker**     | `ReactNode`          | -            |
 | durationComponent | Component that will replace the **duration setter** | `ReactNode`          | -            |
 
-## <a name="hooks"></a>Hooks&nbsp;
+### <a name="hooks"></a>Hooks&nbsp;
 
-## <a name="use-calendar"></a>`useCalendar`
+### <a name="use-calendar"></a>`useCalendar`
 
 This custom hook provides access to all the state values of the package, along with the functions to update the state.
 
@@ -126,7 +126,7 @@ This custom hook provides access to all the state values of the package, along w
 | closedDates      | Dates that should be closed                                  | `string` \| [Dayjs](https://day.js.org/) |
 | closedHours      | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)  |
 
-## <a name="custom-types"></a>Custom Types
+### <a name="custom-types"></a>Custom Types
 
 ### <a name="idate"></a>`IDate`
 
@@ -187,7 +187,7 @@ export type Selected = {
 }
 ```
 
-## <a name="calendar-theme"></a>`CalendarTheme`
+### <a name="calendar-theme"></a>`CalendarTheme`
 
 ```typescript
 type CalendarTheme = {
@@ -197,11 +197,11 @@ type CalendarTheme = {
 }
 ```
 
-### <a name="alias-token"></a>`AliasToken`
+#### <a name="alias-token"></a>`AliasToken`
 
 `general` styles are applied using _Ant Design tokens_. More info [here](https://ant.design/docs/react/customize-theme#seedtoken). _The general styles are inherited if a custom property is not provided_.
 
-### <a name="custom-styles"></a>`CustomStyles`
+#### <a name="custom-styles"></a>`CustomStyles`
 
 `custom` styles allow for component-specific customization. Below are the styles that can be applied.
 | Name | Description | Type |
@@ -216,7 +216,7 @@ type CalendarTheme = {
 | buttonBorderRadius | Border radius of buttons that update duration | `number`
 | carouselWidth | Width of the entire `Calendar` component | `number`
 
-## <a name="utils"></a>Utils
+### <a name="utils"></a>Utils
 
 ### <a name="get-dates"></a>`getDates`
 _returns:_ [IDate[]](#idate)<br />
