@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-calendar-carousel": "^1.1.0",
+    "react-calendar-carousel": "^1.1.3",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
