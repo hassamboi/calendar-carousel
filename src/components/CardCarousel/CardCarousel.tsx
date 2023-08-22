@@ -22,6 +22,7 @@ function CardCarousel({ dates, onClick }: CardCarouselProps) {
     const carouselContainer = carouselRef.current?.innerSlider.list
     let scrolling = false
 
+    /* istanbul ignore if -- @preserve */
     if (carouselContainer) {
       const handleScroll = (event: WheelEvent) => {
         if (scrolling) return

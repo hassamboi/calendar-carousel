@@ -20,6 +20,7 @@ function ValueModifierButton({ modificationType, onClick }: ValueModifierButtonP
 
   return (
     <Button
+      data-testid={"duration-update-btn"}
       onClick={onClick}
       size="large"
       style={{ borderRadius: token.borderRadiusSM, borderColor: token.colorPrimary }}

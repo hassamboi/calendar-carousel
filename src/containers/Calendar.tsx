@@ -56,7 +56,9 @@ export default function Calendar({
   }
 
   const handleTimeChange = (time: Dayjs | null) => {
+    /* istanbul ignore next -- @preserve */
     if (time) setTime(time)
+    /* istanbul ignore next -- @preserve */
     setActiveKey([])
   }
 

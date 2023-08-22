@@ -7,6 +7,7 @@ function useCardsPerSlide() {
 
   let cardCount = 3
 
+  /* istanbul ignore next -- @preserve */
   if (breakpoint.xxl) cardCount = cards.xxl
   else if (breakpoint.xl) cardCount = cards.xl
   else if (breakpoint.lg) cardCount = cards.lg

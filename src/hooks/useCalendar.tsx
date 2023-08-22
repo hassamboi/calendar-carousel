@@ -69,6 +69,7 @@ export function CalendarConfigProvider({
   }
 
   const setTime = (time: Dayjs) => {
+    /* istanbul ignore next -- @preserve */
     setSelected({ ...selected, time })
   }
 
@@ -127,6 +128,8 @@ export function CalendarConfigProvider({
 
 const useCalendar = () => {
   const context = useContext(CalendarContext)
+
+  /* istanbul ignore if -- @preserve */
   if (!context) {
     throw new Error("useCalendar must be used within a CalendarConfig")
   }

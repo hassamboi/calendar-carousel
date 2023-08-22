@@ -23,7 +23,7 @@ const getDisabledTime = ({ start, end }: ClosedHoursRange) => {
   let hoursRemain: boolean = true
   let i: number = start
 
-  while (hoursRemain) {
+  while (hoursRemain && i >= 0) {
     if (i > 23) i = 0
     disabledHours.push(i)
     if (i === end) hoursRemain = false
