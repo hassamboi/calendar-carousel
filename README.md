@@ -262,5 +262,5 @@ Convert time to a formatted string.
 
 ## <a name="built-with"></a>License
 
-Copyright © 2023 [Hassam Ud Din](https://github.com/kefranabg).<br />
+Copyright © 2023 [Hassam Ud Din](https://github.com/hassamboi).<br />
 This project is [MIT](https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE) licensed.
