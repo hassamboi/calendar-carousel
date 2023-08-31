@@ -1,7 +1,7 @@
 # <a name="project-name"></a>react-calendar-carousel
 
 <a href="https://www.npmjs.com/package/react-calendar-carousel">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.1.3-blue" target="_blank" />
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.1.5-blue" target="_blank" />
 </a>
 <a href="https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
@@ -148,7 +148,7 @@ Display format for the date, time and allow the selection of `12` or `24` hour f
 type Formats = {
   date: string /** @default "DD MMMM YYYY"*/
   time: string /** @default "hh:mm a" */
-  clock: "12h" | "24h" /** @default "12h" */
+  clock: '12h' | '24h' /** @default "12h" */
 }
 ```
 

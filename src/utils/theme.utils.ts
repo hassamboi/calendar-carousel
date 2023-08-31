@@ -1,7 +1,7 @@
-import { theme } from "antd"
-import { CalendarTheme, CustomStyles } from "../shared/types"
-import { AliasToken } from "antd/es/theme/internal"
-import { CALENDAR_THEME } from "../shared/constants"
+import { theme } from 'antd'
+import { CalendarTheme, CustomStyles } from '../shared/types'
+import { AliasToken } from 'antd/es/theme/internal'
+import { CALENDAR_THEME } from '../shared/constants'
 
 /**
  * Generates a token object for customizing date-related components.
@@ -15,6 +15,7 @@ const getDateToken = (
 ): Partial<AliasToken> => {
   return {
     colorPrimary: styles?.colorCardHeader || token.colorPrimary,
+    borderRadiusSM: styles?.buttonBorderRadius || token.borderRadiusSM,
     paddingXS: styles?.cardGap || token.paddingXS,
     colorBgContainerDisabled:
       styles?.colorCardHeaderDisabled || token.colorBgContainerDisabled,

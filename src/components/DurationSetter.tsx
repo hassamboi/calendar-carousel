@@ -1,5 +1,6 @@
-import ValueModifierButton from "./common/ValueModifierButton"
-import { Space, theme } from "antd"
+import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
+import CustomIconButton from './common/CustomIconButton'
+import { Space, theme } from 'antd'
 
 const { useToken } = theme
 
@@ -14,9 +15,9 @@ function DurationSetter({ value, onClickDecrease, onClickIncrease }: DurationSet
 
   return (
     <Space>
-      <ValueModifierButton modificationType="subtract" onClick={onClickDecrease} />
+      <CustomIconButton icon={<MinusOutlined />} onClick={onClickDecrease} />
       <span style={{ marginRight: token.margin, marginLeft: token.margin }}>{value}</span>
-      <ValueModifierButton modificationType="add" onClick={onClickIncrease} />
+      <CustomIconButton icon={<PlusOutlined />} onClick={onClickIncrease} />
     </Space>
   )
 }

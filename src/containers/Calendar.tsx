@@ -1,9 +1,9 @@
-import { Collapse, TimePicker, Typography, ConfigProvider, theme, CollapseProps } from "antd"
-import DurationSetter from "../components/DurationSetter"
-import { useCalendar, useCustomStyles } from "../hooks"
-import CardCarousel from "../components/CardCarousel/CardCarousel"
-import { Dayjs } from "dayjs"
-import { useState } from "react"
+import { Collapse, TimePicker, Typography, ConfigProvider, theme, CollapseProps } from 'antd'
+import DurationSetter from '../components/DurationSetter'
+import { useCalendar, useCustomStyles } from '../hooks'
+import CardCarousel from '../components/CardCarousel/CardCarousel'
+import { Dayjs } from 'dayjs'
+import { useState } from 'react'
 import {
   getDateToken,
   getDurationToken,
@@ -12,8 +12,8 @@ import {
   getFormattedDate,
   getDurationInHours,
   getDisabledTime,
-} from "../utils"
-import { DownOutlined } from "@ant-design/icons"
+} from '../utils'
+import { DownOutlined } from '@ant-design/icons'
 
 const { Text } = Typography
 const { useToken } = theme
@@ -47,12 +47,12 @@ export default function Calendar({
   } = useCalendar()
 
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
-    activePanels || ["1", "2"]
+    activePanels || ['1', '2']
   )
 
   const handleDateChange = (date: Dayjs) => {
     setDate(date)
-    setActiveKey(["2"])
+    setActiveKey(['2'])
   }
 
   const handleTimeChange = (time: Dayjs | null) => {
@@ -62,10 +62,10 @@ export default function Calendar({
     setActiveKey([])
   }
 
-  const collapseItems: CollapseProps["items"] = [
+  const collapseItems: CollapseProps['items'] = [
     {
-      key: "1",
-      label: "Date",
+      key: '1',
+      label: 'Date',
       extra: (
         <Text style={{ fontSize: token.fontSizeLG }}>
           {getFormattedDate(selected?.date, formats.date)}
@@ -83,8 +83,8 @@ export default function Calendar({
     },
 
     {
-      key: "2",
-      label: "Time",
+      key: '2',
+      label: 'Time',
       extra: (
         <Text style={{ fontSize: token.fontSizeLG }}>
           {getFormattedTime(selected?.time, formats.time)}
@@ -99,9 +99,9 @@ export default function Calendar({
           <TimePicker
             onChange={handleTimeChange}
             size="large"
-            use12Hours={formats.clock === "12h"}
+            use12Hours={formats.clock === '12h'}
             format={formats.time}
-            style={{ minWidth: "100%" }}
+            style={{ minWidth: '100%' }}
             disabledTime={() => getDisabledTime(closedHours)}
             hideDisabledOptions
             showNow={false}
@@ -111,10 +111,10 @@ export default function Calendar({
     },
 
     {
-      key: "3",
-      label: "Duration",
+      key: '3',
+      label: 'Duration',
       showArrow: false,
-      collapsible: "icon",
+      collapsible: 'icon',
       extra: durationComponent || (
         <ConfigProvider
           theme={{

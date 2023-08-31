@@ -1,4 +1,4 @@
-import { CalendarTheme } from "../types"
+import { CalendarTheme } from '../types'
 
 /**
  * @constant
@@ -7,7 +7,9 @@ import { CalendarTheme } from "../types"
  */
 export const CALENDAR_THEME: CalendarTheme = {
   isDark: false,
-  general: undefined,
+  general: {
+    fontSizeIcon: 14,
+  },
   custom: {
     buttonBorderRadius: 50,
   },

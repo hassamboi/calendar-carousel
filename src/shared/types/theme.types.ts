@@ -1,4 +1,4 @@
-import { AliasToken } from "antd/es/theme/internal"
+import { AliasToken } from 'antd/es/theme/internal'
 
 /**
  * @description Represents a set of color values for various components.

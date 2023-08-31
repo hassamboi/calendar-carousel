@@ -1,25 +1,25 @@
-import { ClosedDate, ClosedHoursRange, Formats, CardBreakpoint } from "../types"
+import { ClosedDate, ClosedHoursRange, Formats, CardBreakpoint } from '../types'
 
 /**
  * @constant
  * The default date format used for formatting dates.
  * @default
  */
-export const DATE_FORMAT: string = "DD MMMM YYYY"
+export const DATE_FORMAT: string = 'DD MMMM YYYY'
 
 /**
  * @constant
  * The default time format used for formatting times.
  * @default
  */
-export const TIME_FORMAT: string = "hh:mm a"
+export const TIME_FORMAT: string = 'hh:mm a'
 
 /**
  * @constant
  * The default clock format (12-hour or 24-hour).
  * @default
  */
-export const CLOCK_FORMAT: "12h" | "24h" = "12h"
+export const CLOCK_FORMAT: '12h' | '24h' = '12h'
 
 /**
  * @constant
@@ -39,11 +39,11 @@ export const FORMATS: Formats = {
  */
 export const CARD_BREAKPOINT: CardBreakpoint = {
   xs: 1,
-  sm: 4,
-  md: 6,
-  lg: 8,
-  xl: 10,
-  xxl: 14,
+  sm: 3,
+  md: 5,
+  lg: 6,
+  xl: 8,
+  xxl: 10,
 }
 
 /**

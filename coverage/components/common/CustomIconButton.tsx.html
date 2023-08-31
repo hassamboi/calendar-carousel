@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/common/ValueModifierButton.tsx</title>
+    <title>Code coverage report for components/common/CustomIconButton.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/common</a> ValueModifierButton.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/common</a> CustomIconButton.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
@@ -95,7 +95,13 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,18 +112,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -127,38 +130,50 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, theme } from "antd"
-import { PlusOutlined, MinusOutlined } from "@ant-design/icons"
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, theme } from 'antd'
+import React from 'react'
 &nbsp;
-type ValueModifierButtonProps = {
-  modificationType: "add" | "subtract"
+type CustomIconButtonProps = {
+  icon: React.ReactNode
+  disabled?: boolean
   onClick: () =&gt; void
 }
 &nbsp;
 const { useToken } = theme
 &nbsp;
-function ValueModifierButton({ modificationType, onClick }: ValueModifierButtonProps) {
+function CustomIconButton({ icon, disabled, onClick }: CustomIconButtonProps) {
   const { token } = useToken()
 &nbsp;
-  const icon =
-    modificationType === "add" ? (
-      &lt;PlusOutlined style={{ color: token.colorPrimary }} /&gt;
-    ) : (
-      &lt;MinusOutlined style={{ color: token.colorPrimary }} /&gt;
-    )
+  const buttonStyles: React.CSSProperties = {
+    borderRadius: token.borderRadiusSM,
+    color: token.colorPrimary,
+    borderColor: token.colorPrimary,
+  }
 &nbsp;
   return (
     &lt;Button
-      data-testid={"duration-update-btn"}
+      data-testid="btn"
       onClick={onClick}
+      disabled={disabled}
       size="large"
-      style={{ borderRadius: token.borderRadiusSM, borderColor: token.colorPrimary }}
-      icon={icon}
+      style={buttonStyles}
+      icon={React.cloneElement(icon as React.ReactElement, {
+        style: {
+          fontSize: token.fontSizeIcon,
+        },
+      })}
     /&gt;
   )
 }
 &nbsp;
-export default ValueModifierButton
+export default CustomIconButton
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -166,7 +181,7 @@ export default ValueModifierButton
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-22T12:15:10.170Z
+                at 2023-08-31T11:43:13.060Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
