@@ -87,3 +87,11 @@ export type ClosedHoursRange = {
   start: number
   end: number
 }
+
+/**
+ * @description Represents panels that can be used
+ * @property {boolean} date - Whether to show the date panel or not
+ * @property {boolean} time - Whether to show the time panel or not
+ * @property {boolean} duration - Whether to show the duration panel or not
+ */
+export type PanelsToShow = { date?: boolean; time?: boolean; duration?: boolean }

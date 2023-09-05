@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { ClosedDate, ClosedHoursRange, Formats, CardBreakpoint } from '../types'
+import { ClosedDate, ClosedHoursRange, Formats, CardBreakpoint, PanelsToShow } from '../types'
 
 /**
  * @constant
@@ -67,3 +67,10 @@ export const CLOSED_DATES: Array<ClosedDate> = []
  * @default
  */
 export const CLOSED_HOURS: ClosedHoursRange = { start: -1, end: -1 }
+
+/**
+ * @constant
+ * The default panels to show.
+ * @default
+ */
+export const PANELS_TO_SHOW: PanelsToShow = { date: true, time: true, duration: true }

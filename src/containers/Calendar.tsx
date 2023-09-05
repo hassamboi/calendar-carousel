@@ -14,25 +14,37 @@ import {
   getDisabledTime,
 } from '../utils'
 import { DownOutlined } from '@ant-design/icons'
+import { PanelsToShow } from '../shared/types'
+import { PANELS_TO_SHOW } from '../shared/constants'
 
 const { Text } = Typography
 const { useToken } = theme
 
 export type CalendarProps = {
-  activePanels?: string | Array<string>
+  panelsToShow?: PanelsToShow
+  openedPanels?: string | Array<string>
   dateComponent?: React.ReactNode
   timeComponent?: React.ReactNode
   durationComponent?: React.ReactNode
 }
 
 export default function Calendar({
-  activePanels,
+  panelsToShow,
+  openedPanels,
   dateComponent,
   timeComponent,
   durationComponent,
 }: CalendarProps) {
   const { token } = useToken()
   const styles = useCustomStyles()
+
+  // just add true to the panels to
+  const panelFilter = {
+    date: panelsToShow?.date !== undefined ? panelsToShow.date : PANELS_TO_SHOW.date,
+    time: panelsToShow?.time !== undefined ? panelsToShow.time : PANELS_TO_SHOW.time,
+    duration:
+      panelsToShow?.duration !== undefined ? panelsToShow.duration : PANELS_TO_SHOW.duration,
+  }
 
   const {
     selected,
@@ -47,7 +59,7 @@ export default function Calendar({
   } = useCalendar()
 
   const [activeKey, setActiveKey] = useState<string | Array<string>>(
-    activePanels || ['1', '2']
+    openedPanels || ['1', '2']
   )
 
   const handleDateChange = (date: Dayjs) => {
@@ -131,6 +143,13 @@ export default function Calendar({
     },
   ]
 
+  const filteredPanels = collapseItems.filter((item) => {
+    if (!panelFilter.date && item.key === '1') return false
+    if (!panelFilter.time && item.key === '2') return false
+    if (!panelFilter.duration && item.key === '3') return false
+    return true
+  })
+
   return (
     <Collapse
       ghost
@@ -143,7 +162,7 @@ export default function Calendar({
         maxWidth: styles?.carouselWidth,
         fontSize: token.fontSizeLG,
       }}
-      items={collapseItems}
+      items={filteredPanels}
     />
   )
 }
