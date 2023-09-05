@@ -1,4 +1,4 @@
-import { Dayjs } from "dayjs"
+import { Dayjs } from 'dayjs'
 
 /**
  * @description Represents a date entry with its associated information.
@@ -10,6 +10,16 @@ export type IDate = {
 
   /** @default false*/
   closed?: boolean
+}
+
+/**
+ * @description Represents the date range for dates
+ * @property {Dayjs} start - The Dayjs object representing the start date.
+ * @property {Dayjs} end - The Dayjs object representing the end date.
+ */
+export type DateRange = {
+  start: Dayjs
+  end: Dayjs
 }
 
 /**
@@ -45,7 +55,7 @@ export type Formats = {
    */
   time: string
   /** @default "12h" */
-  clock: "12h" | "24h"
+  clock: '12h' | '24h'
 }
 
 /**

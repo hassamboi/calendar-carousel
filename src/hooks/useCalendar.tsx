@@ -1,8 +1,8 @@
-import { createContext, useState, useContext, ReactNode } from "react"
-import Constants from "../shared/constants"
-import { Dayjs } from "dayjs"
-import { getDates, getDurationAverage, getThemeAlgorithm } from "../utils"
-import { ConfigProvider } from "antd"
+import { createContext, useState, useContext, ReactNode } from 'react'
+import Constants from '../shared/constants'
+import { Dayjs } from 'dayjs'
+import { getDatesFromRange, getDurationAverage, getThemeAlgorithm } from '../utils'
+import { ConfigProvider } from 'antd'
 import {
   ClosedDate,
   Formats,
@@ -12,7 +12,8 @@ import {
   CustomStyles,
   CardBreakpoint,
   ClosedHoursRange,
-} from "../shared/types"
+  DateRange,
+} from '../shared/types'
 
 type CalendarContext = {
   selected: Selected
@@ -35,7 +36,7 @@ const CalendarContext = createContext<CalendarContext | undefined>(undefined)
 
 type CalendarConfigProviderProps = {
   children: ReactNode
-  dates?: Array<IDate>
+  dates?: DateRange
   durationStep?: number
   formats?: Formats
   minDuration?: number
@@ -103,7 +104,9 @@ export function CalendarConfigProvider({
     setTime,
     increaseDuration,
     decreaseDuration,
-    dates: dates || getDates(1, closedDates || Constants.CLOSED_DATES),
+    dates: dates
+      ? getDatesFromRange(dates, closedDates || Constants.CLOSED_DATES)
+      : getDatesFromRange(Constants.DATE_RANGE, closedDates || Constants.CLOSED_DATES),
     durationStep: durationStep || Constants.DURATION_STEP,
     formats: formats || Constants.FORMATS,
     minDuration: minDuration || Constants.MIN_DURATION,
@@ -131,7 +134,7 @@ const useCalendar = () => {
 
   /* istanbul ignore if -- @preserve */
   if (!context) {
-    throw new Error("useCalendar must be used within a CalendarConfig")
+    throw new Error('useCalendar must be used within a CalendarConfig')
   }
   return context
 }

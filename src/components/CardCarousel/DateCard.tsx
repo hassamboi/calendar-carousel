@@ -1,5 +1,5 @@
-import { Card, theme, Typography } from "antd"
-import { Dayjs } from "dayjs"
+import { Card, theme, Typography } from 'antd'
+import { Dayjs } from 'dayjs'
 
 const { useToken } = theme
 const { Title, Text } = Typography
@@ -32,17 +32,18 @@ function DateCard(props: DateCardProps) {
 
   return (
     <Card
+      data-testid="card"
       hoverable={props.closed ? false : true}
       size="small"
-      title={props.date.format("MMMM")}
-      style={{ textAlign: "center", userSelect: "none" }}
+      title={props.date.format('MMMM')}
+      style={{ textAlign: 'center', userSelect: 'none' }}
       headStyle={headStyle}
       bodyStyle={bodyStyle}
       onClick={handleCardClick}
     >
       <Title
         style={{
-          fontWeight: "400",
+          fontWeight: '400',
           color: token.colorTextSecondary,
           margin: token.marginXS,
           fontSize: token.fontSizeHeading1,
@@ -56,7 +57,7 @@ function DateCard(props: DateCardProps) {
           fontSize: token.fontSizeLG,
         }}
       >
-        {props.date.format("dddd")}
+        {props.date.format('dddd')}
       </Text>
     </Card>
   )

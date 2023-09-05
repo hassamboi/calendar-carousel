@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react'
-import Calendar, { CalendarConfigProvider, getDates } from '../../'
+import Calendar, { CalendarConfigProvider } from '../../'
 import dayjs from 'dayjs'
 
 describe('containers/Calendar', () => {
@@ -12,7 +12,7 @@ describe('containers/Calendar', () => {
   })
   it('renders correctly with custom props', () => {
     const props = {
-      dates: getDates(30),
+      dates: { start: dayjs(), end: dayjs().add(30, 'day') },
       durationStep: 30,
       formats: {
         date: 'D M YY',
@@ -34,15 +34,15 @@ describe('containers/Calendar', () => {
     )
   })
   it('handles date change', () => {
-    const { getByText } = render(
+    const { getAllByTestId } = render(
       <CalendarConfigProvider>
         <Calendar />
       </CalendarConfigProvider>
     )
 
-    const dateCard = getByText(dayjs().format('DD'))
-    expect(dateCard).toBeInTheDocument()
-    fireEvent.click(dateCard)
+    const dateCards = getAllByTestId('card')
+    expect(dateCards[0]).toBeInTheDocument()
+    fireEvent.click(dateCards[0])
   })
   it('handles button clicks', () => {
     const { getAllByTestId } = render(

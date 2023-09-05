@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { ClosedDate, ClosedHoursRange, Formats, CardBreakpoint } from '../types'
 
 /**
@@ -20,6 +21,13 @@ export const TIME_FORMAT: string = 'hh:mm a'
  * @default
  */
 export const CLOCK_FORMAT: '12h' | '24h' = '12h'
+
+/**
+ * @constant
+ * The default date range (1 week).
+ * @default
+ */
+export const DATE_RANGE = { start: dayjs(), end: dayjs().add(7, 'day') }
 
 /**
  * @constant
