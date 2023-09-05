@@ -38,14 +38,6 @@ export default function Calendar({
   const { token } = useToken()
   const styles = useCustomStyles()
 
-  // just add true to the panels to
-  const panelFilter = {
-    date: panelsToShow?.date !== undefined ? panelsToShow.date : PANELS_TO_SHOW.date,
-    time: panelsToShow?.time !== undefined ? panelsToShow.time : PANELS_TO_SHOW.time,
-    duration:
-      panelsToShow?.duration !== undefined ? panelsToShow.duration : PANELS_TO_SHOW.duration,
-  }
-
   const {
     selected,
     dates,
@@ -142,6 +134,8 @@ export default function Calendar({
       ),
     },
   ]
+
+  const panelFilter = { ...PANELS_TO_SHOW, ...panelsToShow }
 
   const filteredPanels = collapseItems.filter((item) => {
     if (!panelFilter.date && item.key === '1') return false
