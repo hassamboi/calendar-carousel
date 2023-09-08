@@ -58,4 +58,14 @@ describe('containers/Calendar', () => {
     fireEvent.click(buttons[2])
     fireEvent.click(buttons[3])
   })
+  it('renders calendar without any panels', () => {
+    const { container } = render(
+      <CalendarConfigProvider>
+        <Calendar panelsToShow={{ date: false, time: false, duration: false }} />
+      </CalendarConfigProvider>
+    )
+
+    const panels = container.getElementsByClassName('ant-collapse-item')
+    expect(panels).toHaveLength(0)
+  })
 })

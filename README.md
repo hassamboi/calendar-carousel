@@ -1,13 +1,17 @@
 # <a name="project-name"></a>react-calendar-carousel
 
+Calendar carousal is a mobile friendly component which give emphasis on selected date and time, you might have seen similar examples in booking related websites where selected dates must remain visible at all times for good UX.
+
+<br />
+
 <a href="https://www.npmjs.com/package/react-calendar-carousel">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.1.7-blue" target="_blank" />
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.1.8-blue" target="_blank" />
 </a>
 <a href="https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
 </a>
-<br /> <br /> 
-Calendar carousal is a mobile friendly component which give emphasis on selected date and time, you might have seen similar examples in booking related websites where selected dates must remain visible at all times for good UX.
+
+<br />
 
 ## <a name="table-of-contents"></a>Table of contents
 
@@ -30,8 +34,9 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
       - [CalendarTheme](#calendar-theme)
         - [AliasToken](#alias-token)
         - [CustomStyles](#custom-styles)
+      - [PanelsToShow](#panels-to-show)
     - [Utils](#utils)
-      - [getDates](#get-dates)
+      - [getDatesFromRange](#get-dates-from-range)
       - [getDurationInHours](#get-duration-in-hours)
       - [getFormattedDate](#get-formatted-date)
       - [getFormattedTime](#get-formatted-time)
@@ -49,31 +54,17 @@ npm i react-calendar-carousel --save
 ## <a name="usage"></a>Usage
 
 ```typescript
-import { CalendarConfigProvider } from  "react-calendar-carousel"
+import Calendar, { CalendarConfigProvider } from 'react-calendar-carousel'
 
-const App = () => {
+const MyCalendarComponent = () => {
   return (
     <CalendarConfigProvider>
-      {...}
+      <Calendar />
     </CalendarConfigProvider>
   )
 }
 
-export default App
-```
-
-```typescript
-import Calendar from  "react-calendar-carousel"
-
-const MyComponent = () => {
-  return (
-    {...}
-      <Calendar />
-    {...}
-  )
-}
-
-export default MyComponent
+export default MyCalendarComponent
 ```
 
 ## <a name="api"></a>API
@@ -84,26 +75,27 @@ The `Calendar` component can be used by wrapping it in the `CalendarConfigProvid
 
 ### <a name="calendar-config-provider"></a>`CalendarConfigProvider`
 
-| Prop         | Description                                                  | Type                                     | Default |
-| :----------- | :----------------------------------------------------------- | :--------------------------------------- | :------ |
-| dates        | The dates displayed in the Carousel                          | [IDate[]](#idate)                        | `Today` |
-| durationStep | The minutes by which duration should increase or decrease by | `number`                                 | `15`    |
-| formats      | The display format for date, time, and clock                 | [Formats](#formats)                      | -       |
-| minDuration  | Lower threshold for the duration **(in minutes)**            | `number`                                 | `60`    |
-| maxDuration  | Upper threshold for the duration **(in minutes)**            | `number`                                 | `180`   |
-| cards        | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       | -       |
-| closedDates  | Dates that should be closed                                  | `string` \| [Dayjs](https://day.js.org/) | -       |
-| closedHours  | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)  | -       |
-| theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)         | -       |
+| Prop         | Description                                                  | Type                                            | Default  |
+| :----------- | :----------------------------------------------------------- | :---------------------------------------------- | :------- |
+| dates        | The dates displayed in the Carousel                          | [DateRange](#date-range)                        | One week |
+| durationStep | The minutes by which duration should increase or decrease by | number                                          | 15       |
+| formats      | The display format for date, time, and clock                 | [Formats](#formats)                             | -        |
+| minDuration  | Lower threshold for the duration **(in minutes)**            | number                                          | 60       |
+| maxDuration  | Upper threshold for the duration **(in minutes)**            | number                                          | 180      |
+| cards        | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)              | -        |
+| closedDate   | Function that specifies the dates that cannot be selected    | (date: [Dayjs](https://day.js.org/)) => boolean | false    |
+| closedHours  | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)         | -        |
+| theme        | Theme for the calendar and the components within             | [CalendarTheme](#calendar-theme)                | -        |
 
 ### <a name="calendar"></a>`Calendar`
 
-| Prop              | Description                                         | Type                 | Default      |
-| :---------------- | :-------------------------------------------------- | :------------------- | :----------- |
-| activePanels      | What panels should initially be opened              | `string \| string[]` | `['1', '2']` |
-| dateComponent     | Component that will replace the **card carousel**   | `ReactNode`          | -            |
-| timeComponent     | Component that will replace the **time picker**     | `ReactNode`          | -            |
-| durationComponent | Component that will replace the **duration setter** | `ReactNode`          | -            |
+| Prop              | Description                                         | Type                            | Default    |
+| :---------------- | :-------------------------------------------------- | :------------------------------ | :--------- |
+| panelsToShow      | Panels that will be filtered out or not shown       | [PanelsToShow](#panels-to-show) | -          |
+| activePanels      | What panels should initially be opened              | string \| string[]              | ['1', '2'] |
+| dateComponent     | Component that will replace the **card carousel**   | ReactNode                       | -          |
+| timeComponent     | Component that will replace the **time picker**     | ReactNode                       | -          |
+| durationComponent | Component that will replace the **duration setter** | ReactNode                       | -          |
 
 ## <a name="hooks"></a>Hooks&nbsp;
 
@@ -111,23 +103,34 @@ The `Calendar` component can be used by wrapping it in the `CalendarConfigProvid
 
 This custom hook provides access to all the state values of the package, along with the functions to update the state.
 
-| Name             | Description                                                  | Type                                     |
-| :--------------- | :----------------------------------------------------------- | :--------------------------------------- |
-| selected         | Selected date, time, and duration                            | [Selected](#selected)                    |
-| setDate          | Function to update the selected date                         | `(date:  Dayjs) =>  void`                |
-| setTime          | Function to update the selected time                         | `(time:  Dayjs) =>  void`                |
-| increaseDuration | Function to increase the selected duration                   | `(offset:  number) =>  number`           |
-| decreaseDuration | Function to decrease the selected duration                   | `(offset:  number) =>  number`           |
-| dates            | The dates displayed in the carousel                          | [IDate[]](#idate)                        |
-| durationStep     | The minutes by which duration should increase or decrease by | `number`                                 |
-| formats          | The display format for date, time, and clock                 | [Formats](#formats)                      |
-| minDuration      | Lower threshold for the duration **(in minutes)**            | `number`                                 |
-| maxDuration      | Upper threshold for the duration **(in minutes)**            | `number`                                 |
-| cards            | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)       |
-| closedDates      | Dates that should be closed                                  | `string` \| [Dayjs](https://day.js.org/) |
-| closedHours      | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)  |
+| Name             | Description                                                  | Type                                            |
+| :--------------- | :----------------------------------------------------------- | :---------------------------------------------- |
+| selected         | Selected date, time, and duration                            | [Selected](#selected)                           |
+| setDate          | Function to update the selected date                         | (date: Dayjs) => void                           |
+| setTime          | Function to update the selected time                         | (time: Dayjs) => void                           |
+| increaseDuration | Function to increase the selected duration                   | (offset: number) => number                      |
+| decreaseDuration | Function to decrease the selected duration                   | (offset: number) => number                      |
+| dates            | The dates displayed in the carousel                          | [IDate[]](#idate)                               |
+| durationStep     | The minutes by which duration should increase or decrease by | number                                          |
+| formats          | The display format for date, time, and clock                 | [Formats](#formats)                             |
+| minDuration      | Lower threshold for the duration **(in minutes)**            | number                                          |
+| maxDuration      | Upper threshold for the duration **(in minutes)**            | number                                          |
+| cards            | Amount of cards per screen to be displayed                   | [CardBreakpoint](#card-breakpoint)              |
+| closedDate       | Function that specifies the dates that cannot be selected    | (date: [Dayjs](https://day.js.org/)) => boolean |
+| closedHours      | Hours that should be closed                                  | [ClosedHoursRange](#closed-hours-range)         |
 
 ## <a name="custom-types"></a>Custom Types
+
+### <a name="date-range"></a>`DateRange`
+
+Range of dates given by `start` and `end`.
+
+```typescript
+type DateRange = {
+  start: Dayjs
+  end: Dayjs
+}
+```
 
 ### <a name="idate"></a>`IDate`
 
@@ -207,26 +210,36 @@ type CalendarTheme = {
 `custom` styles allow for component-specific customization. Below are the styles that can be applied.
 | Name | Description | Type |
 | :--- | :--- | :--- |
-| colorCardHeader | Header color for **open** date cards | `string`
-| colorCardHeaderDisabled | Header color for **closed** date cards | `string`
-| colorCardHeaderText | Text color for date card header | `string`
-| colorCardBodyText | Text color for date card body | `string`
-| colorButton | Color for the buttons that update duration | `string`
-| colorTimePicker | Color for the `TimePicker` component | `string`
-| cardGap | Gap between the date cards in the carousel | `number`
-| buttonBorderRadius | Border radius of buttons that update duration | `number`
-| carouselWidth | Width of the entire `Calendar` component | `number`
+| colorCardHeader | Header color for **open** date cards | string
+| colorCardHeaderDisabled | Header color for **closed** date cards | string
+| colorCardHeaderText | Text color for date card header | string
+| colorCardBodyText | Text color for date card body | string
+| colorButton | Color for the buttons that update duration | string
+| colorTimePicker | Color for the `TimePicker` component | string
+| cardGap | Gap between the date cards in the carousel | number
+| buttonBorderRadius | Border radius of buttons that update duration | number
+| carouselWidth | Width of the entire `Calendar` component | number
+
+### <a name="panels-to-show"></a>`PanelsToShow`
+
+```typescript
+export type PanelsToShow = {
+  date?: boolean /** @default true */
+  time?: boolean /** @default true */
+  duration?: boolean /** @default true */
+}
+```
 
 ## <a name="utils"></a>Utils
 
-### <a name="get-dates"></a>`getDates`
+### <a name="get-dates-from-range"></a>`getDatesFromRange`
 
 _returns:_ [IDate[]](#idate)<br />
-Get a list of dates starting from today by providing the number of required days.
+Get a list of dates by providing a range of dates.
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| amountOfDays | The total number of days starting **from today** | `number`
-| closedDates | Dates that should be closed | `string` \| [Dayjs](https://day.js.org/)
+| range | Range of dates | [DateRange](#date-range) |
+| closedDate | Function that specifies the dates that cannot be selected | (date: [Dayjs](https://day.js.org/)) => boolean |
 
 ### <a name="get-duration-in-hours"></a>`getDurationInHours`
 
@@ -234,7 +247,7 @@ _returns:_ `string`<br />
 Convert minutes into hour representation.
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| minutes | The duration in minutes | `number`
+| minutes | The duration in minutes | number
 
 ### <a name="get-formatted-date"></a>`getFormattedDate`
 
@@ -242,8 +255,8 @@ _returns:_ `string`<br />
 Convert date to a formatted string.
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| date | The date to format | [IDate[]](#idate) \| `null`
-| format | The format to return | `string`
+| date | The date to format | [Dayjs](https://day.js.org/) \| null
+| format | The format to return | string
 
 ### <a name="get-formatted-time"></a>`getFormattedTime`
 
@@ -251,8 +264,8 @@ _returns:_ `string`<br />
 Convert time to a formatted string.
 | Param | Description | Type |
 | :--- | :--- | :--- |
-| time | The time to format | [Dayjs](https://day.js.org/) \| `null`
-| format | The format to return | `string`
+| time | The time to format | [Dayjs](https://day.js.org/) \| null
+| format | The format to return | string
 
 ## <a name="built-with"></a>Built With
 
@@ -260,7 +273,7 @@ Convert time to a formatted string.
 - [Dayjs](https://day.js.org/)
 - [Ant Design](https://ant.design/)
 
-## <a name="built-with"></a>License
+## <a name="license"></a>License
 
 Copyright © 2023 [Hassam Ud Din](https://github.com/hassamboi).<br />
 This project is [MIT](https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE) licensed.

@@ -75,8 +75,10 @@ export type CardBreakpoint = {
   xxl: number
 }
 
-/**@description Represents a closed date. Can be a day (string) or a date (Dayjs) */
-export type ClosedDate = string | Dayjs
+/**
+ * @description Callback for a closed date
+ */
+export type ClosedDate = (date: Dayjs) => boolean
 
 /**
  * @description Represents disabled time range in hours

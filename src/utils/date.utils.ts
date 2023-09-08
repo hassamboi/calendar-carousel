@@ -4,29 +4,12 @@ import isToday from 'dayjs/plugin/isToday'
 dayjs.extend(isToday)
 
 /**
- * Checks if a given date is closed based on the closedDates array.
- * @param {Dayjs} date - The date to check for closure.
- * @param {Array<ClosedDate>} closedDates - An array of closed dates (day names or specific dates).
- * @returns {boolean} `true` if the date is closed, `false` otherwise.
- */
-function isDateClosed(date: Dayjs, closedDates?: Array<ClosedDate>): boolean {
-  const dayName = date.format('dddd')
-  if (
-    closedDates?.includes(dayName) ||
-    closedDates?.some((closedDate) => dayjs(closedDate).isSame(date, 'day'))
-  )
-    return true
-
-  return false
-}
-
-/**
  * Generates a list of dates along with their closure status.
  * @param {number} amountOfDays - The number of days to generate.
- * @param {Array<ClosedDate> | undefined} closedDates - An array of closed dates (day names or specific dates).
+ * @param {ClosedDate} closedDate - Callback for closed date.
  * @returns {Array<IDate>} An array of IDate objects representing dates and their closure status.
  */
-const getDates = (amountOfDays: number, closedDates?: Array<ClosedDate>): Array<IDate> => {
+const getDates = (amountOfDays: number, closedDate: ClosedDate): Array<IDate> => {
   const dateList: Array<IDate> = []
   const today = dayjs(new Date())
 
@@ -34,7 +17,7 @@ const getDates = (amountOfDays: number, closedDates?: Array<ClosedDate>): Array<
     const currDate = today.add(i, 'days')
     dateList.push({
       date: currDate,
-      closed: isDateClosed(currDate, closedDates),
+      closed: closedDate(currDate),
     })
   }
 
@@ -44,19 +27,16 @@ const getDates = (amountOfDays: number, closedDates?: Array<ClosedDate>): Array<
 /**
  * Generates a list of dates from a range of dates.
  * @param {DateRange} range - The number of days to generate.
- * @param {Array<ClosedDate> | undefined} closedDates - An array of closed dates (day names or specific dates).
+ * @param {ClosedDate} closedDate - Callback for closed date.
  * @returns {Array<IDate>} An array of IDate objects representing dates and their closure status.
  */
-const getDatesFromRange = (
-  range: DateRange,
-  closedDates?: Array<ClosedDate>
-): Array<IDate> => {
+const getDatesFromRange = (range: DateRange, closedDate: ClosedDate): Array<IDate> => {
   const dates: Array<IDate> = []
-  let currentDate = range.start
+  let currDate = range.start
 
-  while (!currentDate.isAfter(range.end)) {
-    dates.push({ date: currentDate, closed: isDateClosed(currentDate, closedDates) })
-    currentDate = currentDate.add(1, 'day')
+  while (!currDate.isAfter(range.end)) {
+    dates.push({ date: currDate, closed: closedDate(currDate) })
+    currDate = currDate.add(1, 'day')
   }
 
   return dates
@@ -74,4 +54,4 @@ const getFormattedDate = (date: Dayjs | null, format: string): string => {
   return date?.format(format) || ''
 }
 
-export { getDates, isDateClosed, getFormattedDate, getDatesFromRange }
+export { getDates, getFormattedDate, getDatesFromRange }

@@ -27,7 +27,7 @@ export const CLOCK_FORMAT: '12h' | '24h' = '12h'
  * The default date range (1 week).
  * @default
  */
-export const DATE_RANGE = { start: dayjs(), end: dayjs().add(7, 'day') }
+export const DATE_RANGE = { start: dayjs(), end: dayjs().add(6, 'day') }
 
 /**
  * @constant
@@ -56,10 +56,12 @@ export const CARD_BREAKPOINT: CardBreakpoint = {
 
 /**
  * @constant
- * The default array of closed dates.
+ * The default callback for closed date
  * @default
  */
-export const CLOSED_DATES: Array<ClosedDate> = []
+export const CLOSED_DATE: ClosedDate = () => {
+  return false
+}
 
 /**
  * @constant

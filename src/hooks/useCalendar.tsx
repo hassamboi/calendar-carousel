@@ -27,7 +27,7 @@ type CalendarContext = {
   minDuration: number
   maxDuration: number
   cards: CardBreakpoint
-  closedDates: Array<ClosedDate>
+  closedDate: ClosedDate
   closedHours: ClosedHoursRange
   styles?: Partial<CustomStyles>
 }
@@ -42,7 +42,7 @@ type CalendarConfigProviderProps = {
   minDuration?: number
   maxDuration?: number
   cards?: CardBreakpoint
-  closedDates?: Array<ClosedDate>
+  closedDate?: ClosedDate
   closedHours?: ClosedHoursRange
   theme?: CalendarTheme
 }
@@ -55,7 +55,7 @@ export function CalendarConfigProvider({
   minDuration,
   maxDuration,
   cards,
-  closedDates,
+  closedDate,
   closedHours,
   theme,
 }: CalendarConfigProviderProps) {
@@ -104,15 +104,16 @@ export function CalendarConfigProvider({
     setTime,
     increaseDuration,
     decreaseDuration,
-    dates: dates
-      ? getDatesFromRange(dates, closedDates || Constants.CLOSED_DATES)
-      : getDatesFromRange(Constants.DATE_RANGE, closedDates || Constants.CLOSED_DATES),
+    dates: getDatesFromRange(
+      dates || Constants.DATE_RANGE,
+      closedDate || Constants.CLOSED_DATE
+    ),
     durationStep: durationStep || Constants.DURATION_STEP,
     formats: formats || Constants.FORMATS,
     minDuration: minDuration || Constants.MIN_DURATION,
     maxDuration: maxDuration || Constants.MAX_DURATION,
     cards: cards || Constants.CARD_BREAKPOINT,
-    closedDates: closedDates || Constants.CLOSED_DATES,
+    closedDate: closedDate || Constants.CLOSED_DATE,
     closedHours: closedHours || Constants.CLOSED_HOURS,
     styles: theme?.custom || Constants.CALENDAR_THEME.custom,
   }

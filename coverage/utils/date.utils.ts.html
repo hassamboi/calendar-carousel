@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/8</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>3/3</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/16</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -119,7 +119,8 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
@@ -130,15 +131,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">69x</span>
-<span class="cline-any cline-yes">69x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,18 +153,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">66x</span>
-<span class="cline-any cline-yes">66x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">111x</span>
+<span class="cline-any cline-yes">111x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,52 +172,53 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import dayjs, { Dayjs } from "dayjs"
-import { ClosedDate, IDate } from "../shared/types"
-import isToday from "dayjs/plugin/isToday"
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import dayjs, { Dayjs } from 'dayjs'
+import { ClosedDate, DateRange, IDate } from '../shared/types'
+import isToday from 'dayjs/plugin/isToday'
 dayjs.extend(isToday)
-&nbsp;
-/**
- * Checks if a given date is closed based on the closedDates array.
- * @param {Dayjs} date - The date to check for closure.
- * @param {Array&lt;ClosedDate&gt;} closedDates - An array of closed dates (day names or specific dates).
- * @returns {boolean} `true` if the date is closed, `false` otherwise.
- */
-function isDateClosed(date: Dayjs, closedDates?: Array&lt;ClosedDate&gt;): boolean {
-  const dayName = date.format("dddd")
-  if (
-    closedDates?.includes(dayName) ||
-    closedDates?.some((closedDate) =&gt; dayjs(closedDate).isSame(date, "day"))
-  )
-    return true
-&nbsp;
-  return false
-}
 &nbsp;
 /**
  * Generates a list of dates along with their closure status.
  * @param {number} amountOfDays - The number of days to generate.
- * @param {Array&lt;ClosedDate&gt; | undefined} closedDates - An array of closed dates (day names or specific dates).
+ * @param {ClosedDate} closedDate - Callback for closed date.
  * @returns {Array&lt;IDate&gt;} An array of IDate objects representing dates and their closure status.
  */
-const getDates = (amountOfDays: number, closedDates?: Array&lt;ClosedDate&gt;): Array&lt;IDate&gt; =&gt; {
+const getDates = (amountOfDays: number, closedDate: ClosedDate): Array&lt;IDate&gt; =&gt; {
   const dateList: Array&lt;IDate&gt; = []
   const today = dayjs(new Date())
 &nbsp;
   for (let i = 0; i &lt; amountOfDays; i++) {
-    const currDate = today.add(i, "days")
+    const currDate = today.add(i, 'days')
     dateList.push({
       date: currDate,
-      closed: isDateClosed(currDate, closedDates),
+      closed: closedDate(currDate),
     })
   }
 &nbsp;
   return dateList
+}
+&nbsp;
+/**
+ * Generates a list of dates from a range of dates.
+ * @param {DateRange} range - The number of days to generate.
+ * @param {ClosedDate} closedDate - Callback for closed date.
+ * @returns {Array&lt;IDate&gt;} An array of IDate objects representing dates and their closure status.
+ */
+const getDatesFromRange = (range: DateRange, closedDate: ClosedDate): Array&lt;IDate&gt; =&gt; {
+  const dates: Array&lt;IDate&gt; = []
+  let currDate = range.start
+&nbsp;
+  while (!currDate.isAfter(range.end)) {
+    dates.push({ date: currDate, closed: closedDate(currDate) })
+    currDate = currDate.add(1, 'day')
+  }
+&nbsp;
+  return dates
 }
 &nbsp;
 /**
@@ -226,11 +229,11 @@ const getDates = (amountOfDays: number, closedDates?: Array&lt;ClosedDate&gt;): 
  * @returns {string} The formatted date string.
  */
 const getFormattedDate = (date: Dayjs | null, format: string): string =&gt; {
-  if (date?.isToday()) return "Today"
-  return date?.format(format) || ""
+  if (date?.isToday()) return 'Today'
+  return date?.format(format) || ''
 }
 &nbsp;
-export { getDates, isDateClosed, getFormattedDate }
+export { getDates, getFormattedDate, getDatesFromRange }
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -238,7 +241,7 @@ export { getDates, isDateClosed, getFormattedDate }
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-31T11:43:13.060Z
+                at 2023-09-08T14:13:37.916Z
             </div>
         <script src="../prettify.js"></script>
         <script>
