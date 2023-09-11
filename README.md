@@ -5,7 +5,7 @@ Calendar carousal is a mobile friendly component which give emphasis on selected
 <br />
 
 <a href="https://www.npmjs.com/package/react-calendar-carousel">
-  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.1.8-blue" target="_blank" />
+  <img alt="downloads" src="https://img.shields.io/badge/npm-v1.2.0-blue" target="_blank" />
 </a>
 <a href="https://github.com/hassamboi/calendar-carousel/blob/main/LICENSE">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />

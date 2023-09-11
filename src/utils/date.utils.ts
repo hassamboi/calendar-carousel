@@ -1,7 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { ClosedDate, DateRange, IDate } from '../shared/types'
-import isToday from 'dayjs/plugin/isToday'
-dayjs.extend(isToday)
+import { DATE_FORMAT } from '../shared/constants'
 
 /**
  * Generates a list of dates along with their closure status.
@@ -50,7 +49,7 @@ const getDatesFromRange = (range: DateRange, closedDate: ClosedDate): Array<IDat
  * @returns {string} The formatted date string.
  */
 const getFormattedDate = (date: Dayjs | null, format: string): string => {
-  if (date?.isToday()) return 'Today'
+  if (date?.format(DATE_FORMAT) === dayjs().format(DATE_FORMAT)) return 'Today'
   return date?.format(format) || ''
 }
 
